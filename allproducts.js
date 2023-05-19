@@ -1,19 +1,20 @@
 let allProducts = JSON.parse(localStorage.getItem("SimpleEProducts"));
-console.log(allProducts);
+// console.log(allProducts);
 const productLoad = () => {
     if (allProducts) {
+        viewProducts.innerHTML = ""
         allProducts.map((eachProduct, index) => {
-            console.log(eachProduct);
-            viewProducts.innerHTML = `
+            // console.log(eachProduct);
+            viewProducts.innerHTML += `
         <div class="row">
-          <div class="col-md-2 col-6">
+          <div class="col-md-2 col-12">
             <div class="card">
                 <img src="${eachProduct.productImage}" class="card-img-top" alt="...">
                 <div class="card-body">
                 <h5 class="card-title">Name: ${eachProduct.productName}</h5>
                 <h5>Price: ₦ ${eachProduct.productPrice}</h5>
-                <p class="card-text d-flex gap-3"><button class="btn btn-warning">Edit <i class="fa fa-pen-to-square" onclick="editProduct(${index})" ></i></button>
-                <button class="btn btn-danger">Delete <i class="fa-solid fa-trash" onclick="deleteProduct(${index})"></i></button></p>
+                <p class="card-text d-flex gap-3"><button class="btn btn-warning col-6" onclick="editProduct(${index})">Edit <i class="fa fa-pen-to-square"  ></i></button>
+                <button class="btn btn-danger col-6" onclick="deleteProduct(${index})">Delete <i class="fa-solid fa-trash" ></i></button></p>
             </div>
           </div>
         </div>
@@ -32,8 +33,12 @@ const productLoad = () => {
     }
 }
 productLoad()
+
+
 const deleteProduct = (index) => {
+    console.log(index);
     allProducts.splice(index, 1)
+    console.log(allProducts);
     localStorage.setItem("SimpleEProducts", JSON.stringify(allProducts))
     productLoad()
 }

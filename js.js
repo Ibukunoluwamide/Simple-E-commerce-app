@@ -1,5 +1,5 @@
 let allProducts = []
-if (localStorage.allProducts) {
+if (localStorage.SimpleEProducts) {
     allProducts = JSON.parse(localStorage.getItem('SimpleEProducts'))
 }
 document.getElementById("addProduct").addEventListener('click', () => {
@@ -26,6 +26,7 @@ document.getElementById("addProduct").addEventListener('click', () => {
             }
             allProducts.push(newProduct)
             console.log(allProducts);
+            localStorage.setItem('SimpleEProducts', JSON.stringify(allProducts))
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -38,7 +39,6 @@ document.getElementById("addProduct").addEventListener('click', () => {
                 icon: 'success',
                 title: 'Product successfully added!'
             })
-            localStorage.setItem('SimpleEProducts', JSON.stringify(allProducts))
         });
     }
 
