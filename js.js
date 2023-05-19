@@ -10,11 +10,11 @@ document.getElementById("addProduct").addEventListener('click', () => {
             confirmButtonColor: "#2B7EFA"
         })
     }
-  else {
+    else {
         const imageFile = productImage.files[0];
         const reader = new FileReader();
         reader.readAsDataURL(imageFile);
-        reader.addEventListener('load', async() => {
+        reader.addEventListener('load', async () => {
             // console.log(reader.result);
             imageURL = reader.result
             // console.log(imageURL);
@@ -33,7 +33,7 @@ document.getElementById("addProduct").addEventListener('click', () => {
                 timer: 2000,
                 timerProgressBar: true,
             })
-    
+
             await Toast.fire({
                 icon: 'success',
                 title: 'Product successfully added!'
