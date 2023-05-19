@@ -39,6 +39,7 @@ document.getElementById("addProduct").addEventListener('click', () => {
                 icon: 'success',
                 title: 'Product successfully added!'
             })
+            window.location.reload()
         });
     }
 
